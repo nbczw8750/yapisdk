@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
 export interface YapiSdkOptions {
     baseURL?: string
-    timeout?:number
+    timeout?: number
     token?: string
     path?: string
 }
@@ -25,8 +25,8 @@ export interface YapiSdkInterfaceListCatParams {
 export interface YapiSdkAddInterfaceCatParams {
     desc?: string
     name: string
-    project_id: number 
-    token?: string 
+    project_id: number
+    token?: string
 }
 
 // 服务端数据导入
@@ -34,46 +34,46 @@ export interface YapiSdkImportDataParams {
     type: string // 导入方式 swagger
     json?: string // json 数据，类型为序列化后的字符串，请勿传递 object
     merge: string // 数据同步方式 normal"(普通模式) , "good"(智能合并), "merge"(完全覆盖) 三种模式
-    token?: string 
-    url?:string //导入数据url，如果存在该参数，将会通过 url 方式获取数据
+    token?: string
+    url?: string //导入数据url，如果存在该参数，将会通过 url 方式获取数据
 }
 
 // 新增接口
 export interface YapiSdkAddInterfaceParams {
-    req_query?: Array<any> 
-    req_headers?: Array<any>  
+    req_query?: Array<any>
+    req_headers?: Array<any>
     req_body_form?: Array<any>
-    title: string 
-    catid?: string|number 
-    path: string 
-    status?: string 
-    res_body_type?: string 
-    res_body?: string 
-    switch_notice?: boolean 
-    message?: string 
-    desc?: string 
-    method: string 
-    req_params?: Array<any>  
-    token?: string 
+    title: string
+    catid?: string | number
+    path: string
+    status?: string
+    res_body_type?: string
+    res_body?: string
+    switch_notice?: boolean
+    message?: string
+    desc?: string
+    method: string
+    req_params?: Array<any>
+    token?: string
 }
 // 新增或者更新接口
 export interface YapiSdkSaveInterfaceParams {
-    req_query?: Array<any> 
-    req_headers?: Array<any>  
+    req_query?: Array<any>
+    req_headers?: Array<any>
     req_body_form?: Array<any>
-    title: string 
-    catid: string|number 
-    path: string 
-    status?: string 
-    res_body_type?: string 
-    res_body?: string 
-    switch_notice?: boolean 
-    message?: string 
-    desc?: string 
-    method: string 
-    req_params?: Array<any>  
-    token?: string 
-    id?: string|number 
+    title: string
+    catid: string | number
+    path: string
+    status?: string
+    res_body_type?: string
+    res_body?: string
+    switch_notice?: boolean
+    message?: string
+    desc?: string
+    method: string
+    req_params?: Array<any>
+    token?: string
+    id?: string | number
 }
 
 export class YapiSdk {
@@ -92,14 +92,14 @@ export class YapiSdk {
             if (options.token) {
                 this.token = options.token
             }
-            if(options.timeout){
+            if (options.timeout) {
                 this.timeout = options.timeout
             }
         }
         this.request = axios.create({
             // API 请求的默认前缀
             baseURL: this.baseURL,
-            timeout: this.timeout // 请求超时时间
+            timeout: this.timeout, // 请求超时时间
         })
     }
     getError() {
@@ -115,10 +115,10 @@ export class YapiSdk {
         const url: string = '/api/project/get'
         const response = await this.request({
             url,
-            method:"get",
-            params:{
-                token: this.token
-            }
+            method: 'get',
+            params: {
+                token: this.token,
+            },
         })
         if (response.data.errcode == 0) {
             this.message = response.data.errmsg
@@ -233,17 +233,17 @@ export class YapiSdk {
 
     /**
      * 新增接口分类
-     * @param params 
+     * @param params
      */
-    async addInterfaceCat(params:YapiSdkAddInterfaceCatParams) {
+    async addInterfaceCat(params: YapiSdkAddInterfaceCatParams) {
         const url: string = '/api/interface/add_cat'
         const response = await this.request({
             url,
-            method:"post",
-            data:{
+            method: 'post',
+            data: {
                 token: this.token,
-                ...params
-            }
+                ...params,
+            },
         })
         if (response.data.errcode == 0) {
             this.message = response.data.errmsg
@@ -256,17 +256,17 @@ export class YapiSdk {
 
     /**
      * 服务端数据导入
-     * @param params 
+     * @param params
      */
-    async importData(params:YapiSdkImportDataParams) {
+    async importData(params: YapiSdkImportDataParams) {
         const url: string = '/api/open/import_data'
         const response = await this.request({
             url,
-            method:"post",
-            data:{
+            method: 'post',
+            data: {
                 token: this.token,
-                ...params
-            }
+                ...params,
+            },
         })
         if (response.data.errcode == 0) {
             this.message = response.data.errmsg
@@ -276,20 +276,20 @@ export class YapiSdk {
             return false
         }
     }
-    
+
     /**
      * 新增接口
-     * @param params 
+     * @param params
      */
-    async addInterface(params:YapiSdkAddInterfaceParams) {
+    async addInterface(params: YapiSdkAddInterfaceParams) {
         const url: string = '/api/interface/add'
         const response = await this.request({
             url,
-            method:"post",
-            data:{
+            method: 'post',
+            data: {
                 token: this.token,
-                ...params
-            }
+                ...params,
+            },
         })
         if (response.data.errcode == 0) {
             this.message = response.data.errmsg
@@ -301,17 +301,17 @@ export class YapiSdk {
     }
     /**
      * 新增或者更新接口
-     * @param params 
+     * @param params
      */
-    async saveInterface(params:YapiSdkSaveInterfaceParams) {
+    async saveInterface(params: YapiSdkSaveInterfaceParams) {
         const url: string = '/api/interface/save'
         const response = await this.request({
             url,
-            method:"post",
-            data:{
+            method: 'post',
+            data: {
                 token: this.token,
-                ...params
-            }
+                ...params,
+            },
         })
         if (response.data.errcode == 0) {
             this.message = response.data.errmsg

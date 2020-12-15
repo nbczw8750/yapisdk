@@ -2,15 +2,23 @@
   "name": "yapisdk",
   "version": "1.0.0",
   "description": "yapi sdk",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "author": "nbczw8750",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "start": "tsc -w",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "test": "jest --config jestconfig.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbczw8750/yapisdk.git"
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",
