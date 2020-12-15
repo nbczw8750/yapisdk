@@ -1,0 +1,7 @@
+{
+    "transform": {
+        "^.+\\.(t|j)sx?$": "ts-jest"
+    },
+    "testMatch": ["<rootDir>/src/**/__tests__/**/*[spec|test].[jt]s?(x)"],
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+}
