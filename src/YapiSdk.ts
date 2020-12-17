@@ -3,7 +3,6 @@ export interface YapiSdkOptions {
     baseURL?: string
     timeout?: number
     token?: string
-    path?: string
 }
 
 // 获取接口列表数据
